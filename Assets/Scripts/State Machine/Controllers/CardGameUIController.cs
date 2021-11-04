@@ -6,50 +6,52 @@ using TMPro;
 
 public class CardGameUIController : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI enemyThinkingTextUI = null;
+    [SerializeField] GameObject playerTurnUI = null;
     [SerializeField] TextMeshProUGUI playerTurnTextUI = null;
-
+    [SerializeField] GameObject enemyTurnUI = null;
+    [SerializeField] TextMeshProUGUI enemyThinkingTextUI = null;
 
     private void OnEnable()
     {
-        EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegan;
-        EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnded;
         PlayerTurnCardGameState.PlayerTurnBegan += OnPlayerTurnBegan;
         PlayerTurnCardGameState.PlayerTurnEnded += OnPlayerTurnEnded;
+        EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegan;
+        EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnded;
     }
 
     private void OnDisable()
     {
-        EnemyTurnCardGameState.EnemyTurnBegan -= OnEnemyTurnBegan;
-        EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnded;
         PlayerTurnCardGameState.PlayerTurnBegan -= OnPlayerTurnBegan;
         PlayerTurnCardGameState.PlayerTurnEnded -= OnPlayerTurnEnded;
+        EnemyTurnCardGameState.EnemyTurnBegan -= OnEnemyTurnBegan;
+        EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnded;
     }
 
     private void Start()
     {
         // make sure text is disabled on start
-        enemyThinkingTextUI.gameObject.SetActive(false);
-    }
-
-    private void OnEnemyTurnBegan()
-    {
-        enemyThinkingTextUI.gameObject.SetActive(true);
-    }
-
-    private void OnEnemyTurnEnded()
-    {
-        enemyThinkingTextUI.gameObject.SetActive(false);
+        enemyTurnUI.SetActive(false);
     }
 
     private void OnPlayerTurnBegan()
     {
-        playerTurnTextUI.gameObject.SetActive(true);
+        playerTurnUI.SetActive(true);
         playerTurnTextUI.text = "Player Turn: " + PlayerTurnCardGameState.PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()
     {
-        playerTurnTextUI.gameObject.SetActive(false);
+        playerTurnUI.SetActive(false);
     }
+
+    private void OnEnemyTurnBegan()
+    {
+        enemyTurnUI.SetActive(true);
+    }
+
+    private void OnEnemyTurnEnded()
+    {
+        enemyTurnUI.SetActive(false);
+    }
+
 }

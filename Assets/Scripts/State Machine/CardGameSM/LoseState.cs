@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class LoseState : MonoBehaviour
+public class LoseState : CardGameState
 {
-    // Start is called before the first frame update
-    void Start()
+    public static event Action LoseBegan;
+    public static event Action LoseEnded;
+
+    public override void Enter()
     {
-        
+        Debug.Log("Lose: ...Entering");
+        LoseBegan?.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit()
     {
-        
+        Debug.Log("Lose: Exiting...");
+        LoseEnded?.Invoke();
     }
 }

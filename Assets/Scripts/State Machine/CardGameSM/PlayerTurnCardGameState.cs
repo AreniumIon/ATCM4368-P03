@@ -32,6 +32,13 @@ public class PlayerTurnCardGameState : CardGameState
 
     void OnPressedConfirm()
     {
-        StateMachine.ChangeState<EnemyTurnCardGameState>();
+        if (ProgressionMan.PlayerWins)
+        {
+            StateMachine.ChangeState<WinState>();
+        }
+        else
+        {
+            StateMachine.ChangeState<EnemyTurnCardGameState>();
+        }
     }
 }

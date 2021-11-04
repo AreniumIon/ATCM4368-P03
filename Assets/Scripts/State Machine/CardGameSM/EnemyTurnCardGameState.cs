@@ -31,7 +31,18 @@ public class EnemyTurnCardGameState : CardGameState
 
         Debug.Log("Enemy performs action");
 
-        // turn over. Go back to Player.
-        StateMachine.ChangeState<PlayerTurnCardGameState>();
+        DecideNextState();
+    }
+
+    private void DecideNextState()
+    {
+        if (ProgressionMan.PlayerLoses)
+        {
+            StateMachine.ChangeState<LoseState>();
+        }
+        else
+        {
+            StateMachine.ChangeState<PlayerTurnCardGameState>();
+        }
     }
 }

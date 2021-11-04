@@ -5,9 +5,16 @@ using System;
 
 public class InputController : MonoBehaviour
 {
+    public void InvokeConfirm() { PressedConfirm?.Invoke(); }
     public event Action PressedConfirm = delegate { };
+
+    public void InvokeCancel() { PressedCancel?.Invoke(); }
     public event Action PressedCancel = delegate { };
+
+    public void InvokeLeft() { PressedLeft?.Invoke(); }
     public event Action PressedLeft = delegate { };
+
+    public void InvokeRight() { PressedRight?.Invoke(); }
     public event Action PressedRight = delegate { };
 
     private void Update()
@@ -22,7 +29,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            PressedConfirm?.Invoke();
+            InvokeConfirm();
         }
     }
 
@@ -30,7 +37,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            PressedCancel?.Invoke();
+            InvokeCancel();
         }
     }
 
@@ -38,7 +45,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            PressedLeft?.Invoke();
+            InvokeLeft();
         }
     }
 
@@ -46,7 +53,7 @@ public class InputController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
-            PressedRight?.Invoke();
+            InvokeRight();
         }
     }
 }
