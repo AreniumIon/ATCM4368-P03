@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyThinkingTextUI: {fileID: 1816533274}
+  playerTurnTextUI: {fileID: 725154592}
 --- !u!1 &1313975439
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66bdedb6d9bd524dbb9f7baa2ad0ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTurnTextUI: {fileID: 725154592}
 --- !u!114 &1845818757
 MonoBehaviour:
   m_ObjectHideFlags: 0

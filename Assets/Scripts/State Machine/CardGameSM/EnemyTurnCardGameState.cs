@@ -21,6 +21,7 @@ public class EnemyTurnCardGameState : CardGameState
     public override void Exit()
     {
         Debug.Log("Enemy Turn: Exit...");
+        EnemyTurnEnded?.Invoke();
     }
 
     IEnumerator EnemyThinkingRoutine(float pauseDuration)
@@ -29,7 +30,6 @@ public class EnemyTurnCardGameState : CardGameState
         yield return new WaitForSeconds(pauseDuration);
 
         Debug.Log("Enemy performs action");
-        EnemyTurnEnded?.Invoke();
 
         // turn over. Go back to Player.
         StateMachine.ChangeState<PlayerTurnCardGameState>();

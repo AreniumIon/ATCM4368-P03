@@ -7,17 +7,23 @@ using TMPro;
 public class CardGameUIController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI enemyThinkingTextUI = null;
+    [SerializeField] TextMeshProUGUI playerTurnTextUI = null;
+
 
     private void OnEnable()
     {
         EnemyTurnCardGameState.EnemyTurnBegan += OnEnemyTurnBegan;
         EnemyTurnCardGameState.EnemyTurnEnded += OnEnemyTurnEnded;
+        PlayerTurnCardGameState.PlayerTurnBegan += OnPlayerTurnBegan;
+        PlayerTurnCardGameState.PlayerTurnEnded += OnPlayerTurnEnded;
     }
 
     private void OnDisable()
     {
         EnemyTurnCardGameState.EnemyTurnBegan -= OnEnemyTurnBegan;
         EnemyTurnCardGameState.EnemyTurnEnded -= OnEnemyTurnEnded;
+        PlayerTurnCardGameState.PlayerTurnBegan -= OnPlayerTurnBegan;
+        PlayerTurnCardGameState.PlayerTurnEnded -= OnPlayerTurnEnded;
     }
 
     private void Start()
@@ -34,5 +40,16 @@ public class CardGameUIController : MonoBehaviour
     private void OnEnemyTurnEnded()
     {
         enemyThinkingTextUI.gameObject.SetActive(false);
+    }
+
+    private void OnPlayerTurnBegan()
+    {
+        playerTurnTextUI.gameObject.SetActive(true);
+        playerTurnTextUI.text = "Player Turn: " + PlayerTurnCardGameState.PlayerTurnCount;
+    }
+
+    private void OnPlayerTurnEnded()
+    {
+        playerTurnTextUI.gameObject.SetActive(false);
     }
 }
