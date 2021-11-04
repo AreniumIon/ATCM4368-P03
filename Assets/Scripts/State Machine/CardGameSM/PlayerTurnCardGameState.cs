@@ -8,8 +8,8 @@ public class PlayerTurnCardGameState : CardGameState
     public static event Action PlayerTurnBegan;
     public static event Action PlayerTurnEnded;
 
-    static int playerTurnCount = 0;
-    public static int PlayerTurnCount { get { return playerTurnCount; } }
+    int playerTurnCount = 0;
+    public int PlayerTurnCount { get { return playerTurnCount; } }
 
     public override void Enter()
     {

@@ -11,6 +11,8 @@ public class CardGameUIController : MonoBehaviour
     [SerializeField] GameObject enemyTurnUI = null;
     [SerializeField] TextMeshProUGUI enemyThinkingTextUI = null;
 
+    [SerializeField] PlayerTurnCardGameState playerTurnState;
+
     private void OnEnable()
     {
         PlayerTurnCardGameState.PlayerTurnBegan += OnPlayerTurnBegan;
@@ -36,7 +38,7 @@ public class CardGameUIController : MonoBehaviour
     private void OnPlayerTurnBegan()
     {
         playerTurnUI.SetActive(true);
-        playerTurnTextUI.text = "Player Turn: " + PlayerTurnCardGameState.PlayerTurnCount;
+        playerTurnTextUI.text = "Player Turn: " + playerTurnState.PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()
