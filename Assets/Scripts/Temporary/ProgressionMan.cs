@@ -5,12 +5,18 @@ using UnityEngine;
 public class ProgressionMan : MonoBehaviour
 {
     // Temporarily used to keep track of when player wants to win or lose the game. Referenced by buttons in GameScene.
+    public static ProgressionMan i;
 
-    public static bool PlayerWins { get { return playerWins; } }
-    static bool playerWins = false;
+    private void Awake()
+    {
+        i = this;
+    }
 
-    public static bool PlayerLoses { get { return playerLoses; } }
-    static bool playerLoses = false;
+    public bool PlayerWins { get { return playerWins; } }
+    bool playerWins = false;
+
+    public bool PlayerLoses { get { return playerLoses; } }
+    bool playerLoses = false;
 
     public void SetPlayerWin()
     {
