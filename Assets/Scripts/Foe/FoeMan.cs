@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameConstants;
 
-public class FoeMan : MonoBehaviour
+public class FoeMan : EntityMan
 {
-    // Start is called before the first frame update
-    void Start()
+    public FoeHealth FoeHealth;
+    public FoeActions FoeActions;
+
+    public override void SetParams(EntityInfo entityInfo)
     {
-        
+        this.entityInfo = entityInfo;
+
+        FoeHealth.SetParams(this);
+        FoeActions.SetParams(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public FoeInfo foeInfo
     {
-        
+        get => (FoeInfo)entityInfo;
+        set => SetParams(value);
+    }
+
+    protected override void Die()
+    {
+
     }
 }

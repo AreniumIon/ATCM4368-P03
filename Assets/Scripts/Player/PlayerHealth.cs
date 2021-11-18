@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerHealth : Attackable
 {
-
-    [SerializeField] float startHealth = 10f;
-
     // References
     PlayerMan pm;
     public override EntityMan em { get { return pm; } }
@@ -15,7 +12,7 @@ public class PlayerHealth : Attackable
     {
         this.pm = pm;
 
-        maxHealth = startHealth;
+        maxHealth = pm.playerInfo.health;
         health = maxHealth;
 
         base.SetParams();

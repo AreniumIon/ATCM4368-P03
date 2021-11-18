@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoeHealth : MonoBehaviour
+public class FoeHealth : Attackable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // References
+    FoeMan fm;
+    public override EntityMan em { get { return fm; } }
 
-    // Update is called once per frame
-    void Update()
+    public void SetParams(FoeMan fm)
     {
-        
+        this.fm = fm;
+
+        maxHealth = fm.foeInfo.health;
+        health = maxHealth;
+
+        base.SetParams();
     }
 }

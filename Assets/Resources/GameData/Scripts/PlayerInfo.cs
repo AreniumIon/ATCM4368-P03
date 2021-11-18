@@ -12,4 +12,7 @@ public class PlayerInfo : EntityInfo
     }
 
     public PlayerID playerID;
+    public GameObject model;
+
+    public float health = 20f;
 }
