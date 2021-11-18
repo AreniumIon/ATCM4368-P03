@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public static class ServiceLocator
+public class ServiceLocator
 {
     private static readonly Dictionary<Type, object> Services = new Dictionary<Type, object>();
 
@@ -12,7 +12,12 @@ public static class ServiceLocator
         Services[typeof(T)] = serviceInstance;
     }
 
-    public static T Resolve<T>()
+    public static bool HasService<T>()
+    {
+        return Services.ContainsKey(typeof(T));
+    }
+
+    public static T GetService<T>()
     {
         return (T)Services[typeof(T)];
     }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WinScreenUI : MonoBehaviour
 {
-    [SerializeField] GameObject winScreenUI = null;
+    [SerializeField] GameObject canvasObj = null;
 
     private void OnEnable()
     {
@@ -21,17 +21,17 @@ public class WinScreenUI : MonoBehaviour
 
     private void Start()
     {
-        winScreenUI.SetActive(false);
+        canvasObj.SetActive(false);
     }
 
     private void OnWinStateBegan()
     {
-        winScreenUI.SetActive(true);
+        canvasObj.SetActive(true);
     }
 
     private void OnWinStateEnded()
     {
-        winScreenUI.SetActive(false);
+        canvasObj.SetActive(false);
     }
 
     public void LoadMainMenu()

@@ -5,23 +5,18 @@ using static GameConstants;
 
 public class GameMan : MonoBehaviour
 {
-    public static GameMan i;
-
-    // SetParams() on new game
     public PlayerMan PlayerMan;
-
     public FoeMan FoeMan;
-
+    
     private void Awake()
     {
-        if (i == null)
+        if (ServiceLocator.HasService<GameMan>())
         {
-            i = this;
-            DontDestroyOnLoad(this);
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            ServiceLocator.Register<GameMan>(this);
         }
     }
 
@@ -32,11 +27,9 @@ public class GameMan : MonoBehaviour
 
     public void SetGameParams(PlayerInfo playerInfo)
     {
-        GameObject playerManObject = PlayerConstructor.CreatePlayer(playerInfo.playerID, GameCanvasMan.i.PlayerCanvas.transform);
+        GameObject playerManObject = PlayerConstructor.CreatePlayer(playerInfo.playerID, ServiceLocator.GetService<GameUIMan>().PlayerUI.canvasObj.transform);
         PlayerMan = playerManObject.GetComponent<PlayerMan>();
 
         PlayerMan.SetParams((EntityInfo)playerInfo);
-
-        Debug.Log("finished setparams");
     }
 }

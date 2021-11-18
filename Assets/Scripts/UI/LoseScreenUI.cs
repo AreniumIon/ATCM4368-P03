@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LoseScreenUI : MonoBehaviour
 {
-    [SerializeField] GameObject loseScreenUI = null;
+    [SerializeField] GameObject canvasObj = null;
 
     private void OnEnable()
     {
@@ -21,17 +21,17 @@ public class LoseScreenUI : MonoBehaviour
 
     private void Start()
     {
-        loseScreenUI.SetActive(false);
+        canvasObj.SetActive(false);
     }
 
     private void OnLoseStateBegan()
     {
-        loseScreenUI.SetActive(true);
+        canvasObj.SetActive(true);
     }
 
     private void OnLoseStateEnded()
     {
-        loseScreenUI.SetActive(false);
+        canvasObj.SetActive(false);
     }
 
     public void LoadMainMenu()
