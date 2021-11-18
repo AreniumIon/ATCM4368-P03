@@ -18,6 +18,11 @@ public static class FoeConstructor
     public static GameObject CreateFoe(FoeID newFoeID, Transform parent, Vector3 position)
     {
         GameObject newFoe = GameObject.Instantiate(foePrefab);
+        FoeInfo foeInfo = foeDict[newFoeID];
+
+        // Model
+        GameObject modelPrefab = foeInfo.model;
+        GameObject.Instantiate(modelPrefab, newFoe.transform);
 
         // Transform
         TransformFunctions.SetTransform(newFoe.transform, position);
@@ -26,7 +31,7 @@ public static class FoeConstructor
 
         // Foe
         FoeMan fm = newFoe.GetComponent<FoeMan>();
-        fm.SetParams(foeDict[newFoeID]);
+        fm.SetParams(foeInfo);
 
         // Events
         CreateFoeEvent(fm);

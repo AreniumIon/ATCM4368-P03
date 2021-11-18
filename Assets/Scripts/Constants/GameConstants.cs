@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GameConstants
 {
+    // Enums
     public enum EntityType
     {
         Entity = 0,
@@ -22,4 +23,9 @@ public static class GameConstants
         Hambiter = 1,
         Venus_Fly_Trap = 2,
     }
+
+    // Values
+    public static Vector3 PLAYER_POS = new Vector3(-4, -1, -10);
+    public static Vector3 FOE_POS = new Vector3(4, -1, -10);
+
 }

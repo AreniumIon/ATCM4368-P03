@@ -16,6 +16,11 @@ public static class PlayerConstructor
     public static GameObject CreatePlayer(PlayerID newPlayerID, Transform parent, Vector3 position)
     {
         GameObject newPlayer = GameObject.Instantiate(playerPrefab);
+        PlayerInfo playerInfo = playerDict[newPlayerID];
+
+        // Model
+        GameObject modelPrefab = playerInfo.model;
+        GameObject.Instantiate(modelPrefab, newPlayer.transform);
 
         // Transform
         TransformFunctions.SetTransform(newPlayer.transform, position);
@@ -24,7 +29,7 @@ public static class PlayerConstructor
 
         // Player
         PlayerMan pm = newPlayer.GetComponent<PlayerMan>();
-        pm.SetParams(playerDict[newPlayerID]);
+        pm.SetParams(playerInfo);
 
         // Events
         CreatePlayerEvent(pm);
