@@ -13,19 +13,20 @@ public static class PlayerConstructor
         {PlayerID.Normal, Resources.Load<PlayerInfo>("GameData/Data/PlayerInfo/Normal")},
     };
 
-    public static GameObject CreatePlayer(PlayerID newPlayerID, Transform parent, Vector3 position)
+    public static PlayerInfo GetPlayerInfo(PlayerID playerID)
     {
-        GameObject newPlayer = GameObject.Instantiate(playerPrefab);
+        return playerDict[playerID];
+    }
+
+
+    public static GameObject CreatePlayer(PlayerID newPlayerID, Transform parent)
+    {
+        GameObject newPlayer = GameObject.Instantiate(playerPrefab, parent, false);
         PlayerInfo playerInfo = playerDict[newPlayerID];
 
         // Model
         GameObject modelPrefab = playerInfo.model;
         GameObject.Instantiate(modelPrefab, newPlayer.transform);
-
-        // Transform
-        TransformFunctions.SetTransform(newPlayer.transform, position);
-        if (parent != null)
-            newPlayer.transform.SetParent(parent);
 
         // Player
         PlayerMan pm = newPlayer.GetComponent<PlayerMan>();

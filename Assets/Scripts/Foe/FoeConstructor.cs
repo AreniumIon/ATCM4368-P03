@@ -15,19 +15,14 @@ public static class FoeConstructor
         //{FoeID.Venus_Fly_Trap, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Venus_Fly_Trap")},
     };
 
-    public static GameObject CreateFoe(FoeID newFoeID, Transform parent, Vector3 position)
+    public static GameObject CreateFoe(FoeID newFoeID, Transform parent)
     {
-        GameObject newFoe = GameObject.Instantiate(foePrefab);
+        GameObject newFoe = GameObject.Instantiate(foePrefab, parent, false);
         FoeInfo foeInfo = foeDict[newFoeID];
 
         // Model
         GameObject modelPrefab = foeInfo.model;
         GameObject.Instantiate(modelPrefab, newFoe.transform);
-
-        // Transform
-        TransformFunctions.SetTransform(newFoe.transform, position);
-        if (parent != null)
-            newFoe.transform.SetParent(parent);
 
         // Foe
         FoeMan fm = newFoe.GetComponent<FoeMan>();

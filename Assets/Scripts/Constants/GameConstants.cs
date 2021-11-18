@@ -24,8 +24,4 @@ public static class GameConstants
         Venus_Fly_Trap = 2,
     }
 
-    // Values
-    public static Vector3 PLAYER_POS = new Vector3(-4, -1, -10);
-    public static Vector3 FOE_POS = new Vector3(4, -1, -10);
-
 }

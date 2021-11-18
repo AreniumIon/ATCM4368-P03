@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameConstants;
 
 public class GameMan : MonoBehaviour
 {
@@ -24,11 +25,18 @@ public class GameMan : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SetGameParams(PlayerConstructor.GetPlayerInfo(PlayerID.Normal));
+    }
+
     public void SetGameParams(PlayerInfo playerInfo)
     {
-        GameObject playerManObject = PlayerConstructor.CreatePlayer(playerInfo.playerID, transform, GameConstants.PLAYER_POS);
+        GameObject playerManObject = PlayerConstructor.CreatePlayer(playerInfo.playerID, GameCanvasMan.i.PlayerCanvas.transform);
         PlayerMan = playerManObject.GetComponent<PlayerMan>();
 
         PlayerMan.SetParams((EntityInfo)playerInfo);
+
+        Debug.Log("finished setparams");
     }
 }
