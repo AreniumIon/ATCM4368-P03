@@ -8,8 +8,6 @@ public class PlayerTurnUI : MonoBehaviour
     [SerializeField] GameObject canvasObj = null;
     [SerializeField] TextMeshProUGUI playerTurnTextUI = null;
 
-    [SerializeField] PlayerTurnCardGameState playerTurnState;
-
     private void OnEnable()
     {
         PlayerTurnCardGameState.PlayerTurnBegan += OnPlayerTurnBegan;
@@ -25,7 +23,7 @@ public class PlayerTurnUI : MonoBehaviour
     private void OnPlayerTurnBegan()
     {
         canvasObj.SetActive(true);
-        playerTurnTextUI.text = "Player Turn: " + playerTurnState.PlayerTurnCount;
+        playerTurnTextUI.text = "Player Turn: " + ServiceLocator.GetService<GameMan>().CardGameSM.GetComponent<PlayerTurnCardGameState>().PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()

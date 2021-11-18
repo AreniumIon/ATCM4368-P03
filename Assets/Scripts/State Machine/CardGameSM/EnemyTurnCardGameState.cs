@@ -36,7 +36,7 @@ public class EnemyTurnCardGameState : CardGameState
 
     private void DecideNextState()
     {
-        if (ProgressionMan.i.PlayerLoses)
+        if (ServiceLocator.GetService<GameMan>().ProgressionMan.PlayerLoses)
         {
             StateMachine.ChangeState<LoseState>();
         }

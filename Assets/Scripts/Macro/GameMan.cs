@@ -7,6 +7,10 @@ public class GameMan : MonoBehaviour
 {
     public PlayerMan PlayerMan;
     public FoeMan FoeMan;
+
+    public CardGameSM CardGameSM;
+    public InputController InputController;
+    public ProgressionMan ProgressionMan;
     
     private void Awake()
     {

@@ -32,7 +32,7 @@ public class PlayerTurnCardGameState : CardGameState
 
     void OnPressedConfirm()
     {
-        if (ProgressionMan.i.PlayerWins)
+        if (ServiceLocator.GetService<GameMan>().ProgressionMan.PlayerWins)
         {
             StateMachine.ChangeState<WinState>();
         }
