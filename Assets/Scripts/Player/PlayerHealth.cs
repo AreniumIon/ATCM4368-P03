@@ -12,8 +12,8 @@ public class PlayerHealth : Attackable
     {
         this.pm = pm;
 
-        maxHealth = pm.playerInfo.health;
-        health = maxHealth;
+        MaxHealth = pm.playerInfo.health;
+        Health = MaxHealth;
 
         base.SetParams();
     }

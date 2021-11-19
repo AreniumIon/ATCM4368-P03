@@ -11,12 +11,4 @@ public class CommandStack : MonoBehaviour
         command.Execute();
         commandHistory.Push(command);
     }
-
-    public void UndoLastCommand()
-    {
-        if (commandHistory.Count <= 0)
-            return;
-
-        commandHistory.Pop().Undo();
-    }
 }

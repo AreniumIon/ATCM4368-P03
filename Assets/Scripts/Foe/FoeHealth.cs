@@ -12,8 +12,8 @@ public class FoeHealth : Attackable
     {
         this.fm = fm;
 
-        maxHealth = fm.foeInfo.health;
-        health = maxHealth;
+        MaxHealth = fm.foeInfo.health;
+        Health = MaxHealth;
 
         base.SetParams();
     }
