@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class StateMachine : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public abstract class StateMachine : MonoBehaviour
 
     protected bool InTransition { get; private set; }
 
+    public event Action<State> ChangeStateEvent;
     public void ChangeState<T>() where T : State
     {
         T targetState = GetComponent<T>();
@@ -52,6 +54,7 @@ public abstract class StateMachine : MonoBehaviour
 
         currentState?.Exit();
         currentState = newState;
+        ChangeStateEvent.Invoke(newState);
         currentState?.Enter();
 
         InTransition = false;
