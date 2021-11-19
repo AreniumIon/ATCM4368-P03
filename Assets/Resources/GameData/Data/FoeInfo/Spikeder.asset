@@ -15,5 +15,5 @@ MonoBehaviour:
   name: Spikeder
   entityType: 2
   foeID: 0
-  model: {fileID: 0}
+  model: {fileID: 876518473413982347, guid: 76c28b6bbd3098445afbe2dacf69fe66, type: 3}
   health: 20

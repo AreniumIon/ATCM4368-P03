@@ -11,14 +11,14 @@ public class FoeTurnUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyTurnCardGameState.EnemyTurnBegan += OnFoeTurnBegan;
-        EnemyTurnCardGameState.EnemyTurnEnded += OnFoeTurnEnded;
+        FoeTurnCardGameState.FoeTurnBegan += OnFoeTurnBegan;
+        FoeTurnCardGameState.FoeTurnEnded += OnFoeTurnEnded;
     }
 
     private void OnDisable()
     {
-        EnemyTurnCardGameState.EnemyTurnBegan -= OnFoeTurnBegan;
-        EnemyTurnCardGameState.EnemyTurnEnded -= OnFoeTurnEnded;
+        FoeTurnCardGameState.FoeTurnBegan -= OnFoeTurnBegan;
+        FoeTurnCardGameState.FoeTurnEnded -= OnFoeTurnEnded;
     }
 
     private void Start()

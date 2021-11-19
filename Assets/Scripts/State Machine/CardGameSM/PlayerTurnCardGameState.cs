@@ -38,7 +38,7 @@ public class PlayerTurnCardGameState : CardGameState
         }
         else
         {
-            StateMachine.ChangeState<EnemyTurnCardGameState>();
+            StateMachine.ChangeState<FoeTurnCardGameState>();
         }
     }
 }

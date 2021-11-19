@@ -3,28 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyTurnCardGameState : CardGameState
+public class FoeTurnCardGameState : CardGameState
 {
-    public static event Action EnemyTurnBegan;
-    public static event Action EnemyTurnEnded;
+    public static event Action FoeTurnBegan;
+    public static event Action FoeTurnEnded;
 
     [SerializeField] float pauseDuration = 1.5f;
 
     public override void Enter()
     {
         Debug.Log("Enemy Turn: ...Enter");
-        EnemyTurnBegan?.Invoke();
+        FoeTurnBegan?.Invoke();
 
-        StartCoroutine(EnemyThinkingRoutine(pauseDuration));
+        StartCoroutine(FoeThinkingRoutine(pauseDuration));
     }
 
     public override void Exit()
     {
         Debug.Log("Enemy Turn: Exit...");
-        EnemyTurnEnded?.Invoke();
+        FoeTurnEnded?.Invoke();
     }
 
-    IEnumerator EnemyThinkingRoutine(float pauseDuration)
+    IEnumerator FoeThinkingRoutine(float pauseDuration)
     {
         Debug.Log("Enemy thinking...");
         yield return new WaitForSeconds(pauseDuration);

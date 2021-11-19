@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SetupCardGameState : CardGameState
+public class SetupGameState : CardGameState
 {
-    [SerializeField] int startingCardNumber = 10;
+    [SerializeField] int startingTokenNumber = 10;
     [SerializeField] int numberOfPlayers = 2;
 
     bool activated = false;
@@ -14,7 +14,7 @@ public class SetupCardGameState : CardGameState
     {
         Debug.Log("Setup: ...Entering");
         Debug.Log("Creating " + numberOfPlayers + " players.");
-        Debug.Log("Creating deck with " + startingCardNumber + " cards.");
+        Debug.Log("Creating " + startingTokenNumber + " tokens.");
         activated = false;
     }
 

@@ -9,6 +9,6 @@ public class CardGameSM : StateMachine
 
     private void Start()
     {
-        ChangeState<SetupCardGameState>();
+        ChangeState<SetupGameState>();
     }
 }
