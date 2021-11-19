@@ -12,7 +12,7 @@ public class StateTracker : MonoBehaviour
 
     Dictionary<Type, object> states = new Dictionary<Type, object>();
 
-    private void Start()
+    private void Awake()
     {
         stateMachine.ChangeStateEvent += TrackState;
     }

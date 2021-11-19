@@ -9,6 +9,8 @@ public class GameMan : MonoBehaviour
     public FoeMan FoeMan;
 
     public CardGameSM CardGameSM;
+    public StateTracker StateTracker;
+
     public InputController InputController;
     public ProgressionMan ProgressionMan;
     

@@ -23,7 +23,7 @@ public class PlayerTurnUI : MonoBehaviour
     private void OnPlayerTurnBegan()
     {
         canvasObj.SetActive(true);
-        playerTurnTextUI.text = "Player Turn: " + ServiceLocator.GetService<GameMan>().CardGameSM.GetComponent<PlayerTurnCardGameState>().PlayerTurnCount;
+        playerTurnTextUI.text = "Player Turn: " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnCardGameState>().PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()

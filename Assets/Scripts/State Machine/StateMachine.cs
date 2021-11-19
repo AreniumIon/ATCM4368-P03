@@ -54,7 +54,7 @@ public abstract class StateMachine : MonoBehaviour
 
         currentState?.Exit();
         currentState = newState;
-        ChangeStateEvent.Invoke(newState);
+        ChangeStateEvent?.Invoke(newState);
         currentState?.Enter();
 
         InTransition = false;
