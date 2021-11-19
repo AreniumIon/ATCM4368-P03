@@ -3799,6 +3799,7 @@ GameObject:
   - component: {fileID: 1845818753}
   - component: {fileID: 1845818754}
   - component: {fileID: 1845818755}
+  - component: {fileID: 1845818760}
   - component: {fileID: 1845818756}
   - component: {fileID: 1845818757}
   - component: {fileID: 1845818759}
@@ -3849,8 +3850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e144403a36c8bfe4b91bdbad99cf624f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingCardNumber: 10
-  numberOfPlayers: 2
+  playerInfo: {fileID: 11400000, guid: ca34b390b2c41f94999ada4f6f4b9938, type: 2}
 --- !u!114 &1845818756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845818752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c66bdedb6d9bd524dbb9f7baa2ad0ade, type: 3}
+  m_Script: {fileID: 11500000, guid: 4af3cee0bd2a6fa46a22230647eaa297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1845818757
@@ -3872,7 +3872,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1845818752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e15be7a5763d4cf46b792daf82a8c553, type: 3}
+  m_Script: {fileID: 11500000, guid: ed26d874fa3576c4e966f20bfddfd030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pauseDuration: 1.5
@@ -3900,6 +3900,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bab199384f3544da94bc44ae4a95d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1845818760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845818752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687faee9571f906458307501c7bb198e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingTokenNumber: 10
+  foeInfo: {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
 --- !u!1 &1948571605
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,20 +10,20 @@ public class PlayerTurnUI : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerTurnCardGameState.PlayerTurnBegan += OnPlayerTurnBegan;
-        PlayerTurnCardGameState.PlayerTurnEnded += OnPlayerTurnEnded;
+        PlayerTurnState.PlayerTurnBegan += OnPlayerTurnBegan;
+        PlayerTurnState.PlayerTurnEnded += OnPlayerTurnEnded;
     }
 
     private void OnDisable()
     {
-        PlayerTurnCardGameState.PlayerTurnBegan -= OnPlayerTurnBegan;
-        PlayerTurnCardGameState.PlayerTurnEnded -= OnPlayerTurnEnded;
+        PlayerTurnState.PlayerTurnBegan -= OnPlayerTurnBegan;
+        PlayerTurnState.PlayerTurnEnded -= OnPlayerTurnEnded;
     }
 
     private void OnPlayerTurnBegan()
     {
         canvasObj.SetActive(true);
-        playerTurnTextUI.text = "Player Turn: " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnCardGameState>().PlayerTurnCount;
+        playerTurnTextUI.text = "Player Turn: " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnState>().PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()

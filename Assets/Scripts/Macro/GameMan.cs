@@ -8,7 +8,7 @@ public class GameMan : MonoBehaviour
     public PlayerMan PlayerMan;
     public FoeMan FoeMan;
 
-    public CardGameSM CardGameSM;
+    public TokenGameSM CardGameSM;
     public StateTracker StateTracker;
 
     public InputController InputController;
@@ -28,7 +28,7 @@ public class GameMan : MonoBehaviour
 
     private void Start()
     {
-        SetGameParams(PlayerConstructor.GetPlayerInfo(PlayerID.Normal));
+        //SetGameParams(PlayerConstructor.GetPlayerInfo(PlayerID.Normal));
     }
 
     public void SetGameParams(PlayerInfo playerInfo)

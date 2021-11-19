@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityInfo: {fileID: 0}
-  FoeHealth: {fileID: 0}
-  FoeActions: {fileID: 0}
+  FoeHealth: {fileID: 4733707642821913460}
+  FoeActions: {fileID: 523445622183089555}
 --- !u!114 &4733707642821913460
 MonoBehaviour:
   m_ObjectHideFlags: 0

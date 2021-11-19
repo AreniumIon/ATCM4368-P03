@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerTurnCardGameState : CardGameState
+public class PlayerTurnState : TokenGameState
 {
     public static event Action PlayerTurnBegan;
     public static event Action PlayerTurnEnded;
@@ -38,7 +38,7 @@ public class PlayerTurnCardGameState : CardGameState
         }
         else
         {
-            StateMachine.ChangeState<FoeTurnCardGameState>();
+            StateMachine.ChangeState<FoeTurnState>();
         }
     }
 }

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class LoseState : CardGameState
+public class WinState : TokenGameState
 {
-    public static event Action LoseBegan;
-    public static event Action LoseEnded;
+    public static event Action WinBegan;
+    public static event Action WinEnded;
 
     public override void Enter()
     {
         Debug.Log("Lose: ...Entering");
-        LoseBegan?.Invoke();
+        WinBegan?.Invoke();
     }
 
     public override void Exit()
     {
         Debug.Log("Lose: Exiting...");
-        LoseEnded?.Invoke();
+        WinEnded?.Invoke();
     }
 }
