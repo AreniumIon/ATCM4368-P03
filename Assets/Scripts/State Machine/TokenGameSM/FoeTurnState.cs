@@ -30,6 +30,7 @@ public class FoeTurnState : TokenGameState
         yield return new WaitForSeconds(pauseDuration);
 
         Debug.Log("Enemy performs action");
+        FoeAction();
 
         DecideNextState();
     }
@@ -43,6 +44,16 @@ public class FoeTurnState : TokenGameState
         else
         {
             StateMachine.ChangeState<PlayerTurnState>();
+        }
+    }
+
+    private void FoeAction()
+    {
+        FoeMan foeMan = ServiceLocator.GetService<GameMan>().FoeMan;
+
+        if (foeMan != null)
+        {
+            foeMan.FoeActions.DoRandomAction();
         }
     }
 }

@@ -16,12 +16,13 @@ public class FoeActions : MonoBehaviour
         actions = fm.foeInfo.actions;
     }
 
-    public ICommand GetRandomCommand()
+    public void DoRandomAction()
     {
+        // Get command
         ActionInfo actionInfo = GetRandomAction();
         ICommand command = CommandConstructor.CreateCommand(actionInfo.commandID, actionInfo.value, GetTarget(actionInfo.commandID));
 
-        return command;
+        ServiceLocator.GetService<GameMan>().CommandStack.ExecuteCommand(command);
     }
 
     private ActionInfo GetRandomAction()
