@@ -11,10 +11,14 @@ public class PlayerTurnState : TokenGameState
     int playerTurnCount = 0;
     public int PlayerTurnCount { get { return playerTurnCount; } }
 
+    [SerializeField] int maxTokens = 3;
+
     public override void Enter()
     {
-        Debug.Log("Player Turn: ...Entering");
         playerTurnCount++;
+
+        CheckSpawnToken();
+
         PlayerTurnBegan?.Invoke();
 
         // hook into events
@@ -32,8 +36,6 @@ public class PlayerTurnState : TokenGameState
 
     void OnPressedConfirm()
     {
-
-
         AdvanceState();
     }
 
@@ -48,5 +50,13 @@ public class PlayerTurnState : TokenGameState
         {
             StateMachine.ChangeState<FoeTurnState>();
         }
+    }
+
+    void CheckSpawnToken()
+    {
+        PlayerMan playerMan = ServiceLocator.GetService<GameMan>().PlayerMan;
+
+        if (playerMan.PlayerTokens.tokens.Count < maxTokens && playerTurnCount > 1)
+            TokenConstructor.CreatePlayerToken();
     }
 }

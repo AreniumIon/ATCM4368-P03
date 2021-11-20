@@ -46,16 +46,7 @@ public class SetupBattleState : TokenGameState
     {
         for (int i = 0; i < startingTokenNumber; i++)
         {
-            SpawnToken();
+            TokenConstructor.CreatePlayerToken();
         }
-    }
-
-    private void SpawnToken()
-    {
-        GameMan gameMan = ServiceLocator.GetService<GameMan>();
-        GameUIMan gameUIMan = ServiceLocator.GetService<GameUIMan>();
-
-        GameObject tokenManObj = TokenConstructor.CreateRandomToken(gameUIMan.PlayerTurnUI.tokenParent);
-        TokenMan tokenMan = tokenManObj.GetComponent<TokenMan>();
     }
 }

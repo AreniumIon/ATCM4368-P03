@@ -41,7 +41,7 @@ public class TokenMan : EntityMan
         gameMan.CommandStack.ExecuteCommand(command);
 
         // Remove Token
-        Die();
+        DeathEvent();
 
         // Finish turn
         InputController inputController = gameMan.InputController;

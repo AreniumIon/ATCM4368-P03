@@ -5,17 +5,24 @@ public class PlayerTokens : MonoBehaviour
 {
     PlayerMan pm;
 
-    //public List<Token> tokens = new List<Token>();
+    public List<TokenMan> tokens = new List<TokenMan>();
 
     public void SetParams(PlayerMan pm)
     {
         this.pm = pm;
+
+        TokenConstructor.createTokenEvent += AddToken;
     }
 
-    public void AddToken()
+    public void AddToken(TokenMan tm)
     {
+        tokens.Add(tm);
 
+        tm.deathEvent += RemoveToken;
     }
 
-    // TODO: addTokenEvent(Token token)
+    public void RemoveToken(EntityMan em)
+    {
+        tokens.Remove((TokenMan) em);
+    }
 }

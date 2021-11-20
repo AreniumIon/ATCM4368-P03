@@ -20,6 +20,16 @@ public static class TokenConstructor
         return tokenDict[tokenID];
     }
 
+    // Called in SetupBattleState and PlayerTurnState
+    public static void CreatePlayerToken()
+    {
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        GameUIMan gameUIMan = ServiceLocator.GetService<GameUIMan>();
+
+        GameObject tokenManObj = CreateRandomToken(gameUIMan.PlayerTurnUI.tokenParent);
+        TokenMan tokenMan = tokenManObj.GetComponent<TokenMan>();
+    }
+
     public static GameObject CreateRandomToken(Transform parent)
     {
         int choice = UnityEngine.Random.Range(0, tokenDict.Count);
