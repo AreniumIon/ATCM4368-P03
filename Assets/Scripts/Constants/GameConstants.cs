@@ -10,6 +10,7 @@ public static class GameConstants
         Entity = 0,
         Player = 1,
         Foe = 2,
+        Token = 3,
     }
 
     public enum PlayerID
@@ -22,6 +23,13 @@ public static class GameConstants
         Spikeder = 0,
         Hambiter = 1,
         Venus_Fly_Trap = 2,
+    }
+
+    public enum TokenID
+    { 
+        Attack = 0,
+        Defend = 1,
+        Heal = 2,
     }
 
 }

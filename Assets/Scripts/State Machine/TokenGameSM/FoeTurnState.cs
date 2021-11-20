@@ -36,7 +36,7 @@ public class FoeTurnState : TokenGameState
 
     private void DecideNextState()
     {
-        if (ServiceLocator.GetService<GameMan>().ProgressionMan.PlayerLoses)
+        if (ServiceLocator.GetService<GameMan>().PlayerMan == null)
         {
             StateMachine.ChangeState<LoseState>();
         }

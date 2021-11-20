@@ -12,6 +12,7 @@ public class GameMan : MonoBehaviour
     public StateTracker StateTracker;
 
     public InputController InputController;
+    public CommandStack CommandStack;
     public ProgressionMan ProgressionMan;
     
     private void Awake()

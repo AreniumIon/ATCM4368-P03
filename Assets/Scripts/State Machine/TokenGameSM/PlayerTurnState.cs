@@ -32,7 +32,15 @@ public class PlayerTurnState : TokenGameState
 
     void OnPressedConfirm()
     {
-        if (ServiceLocator.GetService<GameMan>().ProgressionMan.PlayerWins)
+
+
+        AdvanceState();
+    }
+
+    void AdvanceState()
+    {
+        // Check if foe exists
+        if (ServiceLocator.GetService<GameMan>().FoeMan == null)
         {
             StateMachine.ChangeState<WinState>();
         }

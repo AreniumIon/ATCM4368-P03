@@ -8,52 +8,43 @@ public static class TokenConstructor
 {
     static GameObject tokenPrefab = Resources.Load<GameObject>("Prefabs/Token");
 
-    /*
-    static Dictionary<PlayerID, TokenInfo> tokenDict = new Dictionary<PlayerID, TokenInfo>()
+    static Dictionary<TokenID, TokenInfo> tokenDict = new Dictionary<TokenID, TokenInfo>()
     {
-        {PlayerID.Normal, Resources.Load<PlayerInfo>("GameData/Data/PlayerInfo/Normal")},
+        {TokenID.Attack, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Attack Token")},
+        {TokenID.Defend, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Defend Token")},
+        {TokenID.Heal, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Heal Token")},
     };
 
-    public static PlayerInfo GetPlayerInfo(PlayerID playerID)
+    public static TokenInfo GetTokenInfo(TokenID tokenID)
     {
-        return tokenDict[playerID];
+        return tokenDict[tokenID];
     }
-    */
 
-    /*
-    public static GameObject CreateToken(PlayerID newPlayerID, Transform parent)
+    public static GameObject CreateToken(TokenID newTokenID, Transform parent)
     {
-        GameObject newPlayer = GameObject.Instantiate(tokenPrefab, parent, false);
-        PlayerInfo playerInfo = tokenDict[newPlayerID];
+        GameObject newToken = GameObject.Instantiate(tokenPrefab, parent, false);
+        TokenInfo tokenInfo = tokenDict[newTokenID];
 
-        // Model
-        GameObject modelPrefab = playerInfo.model;
-        GameObject.Instantiate(modelPrefab, newPlayer.transform);
-
-        // Player
-        PlayerMan pm = newPlayer.GetComponent<PlayerMan>();
-        pm.SetParams(playerInfo);
-
-        // Health Bar
-        EntityHealthBarConstructor.CreateHealthBar(pm.PlayerHealth, newPlayer.transform);
+        // Token
+        TokenMan tm = newToken.GetComponent<TokenMan>();
+        tm.SetParams(tokenInfo);
 
         // Events
-        CreatePlayerEvent(pm);
+        CreateTokenEvent(tm);
 
-        return newPlayer;
+        return newToken;
     }
 
     // Events
-    public static event Action<PlayerMan> createPlayerEvent;
-    public static void CreatePlayerEvent(PlayerMan newPlayer)
+    public static event Action<TokenMan> createTokenEvent;
+    public static void CreateTokenEvent(TokenMan newToken)
     {
-        if (createPlayerEvent != null)
-            createPlayerEvent(newPlayer);
+        if (createTokenEvent != null)
+            createTokenEvent(newToken);
     }
 
     public static void ClearEvents()
     {
-        createPlayerEvent = null;
+        createTokenEvent = null;
     }
-    */
 }

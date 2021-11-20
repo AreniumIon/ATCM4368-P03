@@ -8,6 +8,8 @@ public class PlayerTurnUI : MonoBehaviour
     [SerializeField] GameObject canvasObj = null;
     [SerializeField] TextMeshProUGUI playerTurnTextUI = null;
 
+    public Transform tokenParent;
+
     private void OnEnable()
     {
         PlayerTurnState.PlayerTurnBegan += OnPlayerTurnBegan;
