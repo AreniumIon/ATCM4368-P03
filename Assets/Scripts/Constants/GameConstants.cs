@@ -25,8 +25,8 @@ public static class GameConstants
         Venus_Fly_Trap = 2,
     }
 
-    public enum TokenID
-    { 
+    public enum CommandID
+    {
         Attack = 0,
         Defend = 1,
         Heal = 2,

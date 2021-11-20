@@ -15,5 +15,5 @@ public class FoeInfo : EntityInfo
     public GameObject model;
 
     public int health = 20;
-    //public List<FoeAction>
+    public List<ActionInfo> actions;
 }

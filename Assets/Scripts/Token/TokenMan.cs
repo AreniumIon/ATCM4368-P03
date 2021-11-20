@@ -35,8 +35,8 @@ public class TokenMan : EntityMan
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
 
         // Create command
-        Attackable target = GetTarget(tokenInfo.tokenID);
-        ICommand command = CommandConstructor.CreateCommand(tokenInfo.tokenID, 5, target);
+        Attackable target = GetTarget(tokenInfo.commandID);
+        ICommand command = CommandConstructor.CreateCommand(tokenInfo.commandID, 5, target);
 
         // Execute
         gameMan.CommandStack.ExecuteCommand(command);
@@ -49,18 +49,18 @@ public class TokenMan : EntityMan
         inputController.InvokeConfirm();
     }
 
-    private Attackable GetTarget(TokenID tokenID)
+    private Attackable GetTarget(CommandID commandID)
     {
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
 
-        switch (tokenID)
+        switch (commandID)
         {
             default:
-            case TokenID.Attack:
+            case CommandID.Attack:
                 return gameMan.FoeMan.FoeHealth;
-            case TokenID.Defend:
+            case CommandID.Defend:
                 return gameMan.PlayerMan.PlayerHealth;
-            case TokenID.Heal:
+            case CommandID.Heal:
                 return gameMan.PlayerMan.PlayerHealth;
         }
     }

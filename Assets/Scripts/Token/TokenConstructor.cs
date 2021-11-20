@@ -8,16 +8,16 @@ public static class TokenConstructor
 {
     static GameObject tokenPrefab = Resources.Load<GameObject>("Prefabs/Token");
 
-    static Dictionary<TokenID, TokenInfo> tokenDict = new Dictionary<TokenID, TokenInfo>()
+    static Dictionary<CommandID, TokenInfo> tokenDict = new Dictionary<CommandID, TokenInfo>()
     {
-        {TokenID.Attack, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Attack Token")},
-        {TokenID.Defend, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Defend Token")},
-        {TokenID.Heal, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Heal Token")},
+        {CommandID.Attack, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Attack Token")},
+        {CommandID.Defend, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Defend Token")},
+        {CommandID.Heal, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Heal Token")},
     };
 
-    public static TokenInfo GetTokenInfo(TokenID tokenID)
+    public static TokenInfo GetTokenInfo(CommandID commandID)
     {
-        return tokenDict[tokenID];
+        return tokenDict[commandID];
     }
 
     // Called in SetupBattleState and PlayerTurnState
@@ -33,16 +33,16 @@ public static class TokenConstructor
     public static GameObject CreateRandomToken(Transform parent)
     {
         int choice = UnityEngine.Random.Range(0, tokenDict.Count);
-        TokenID newTokenID = (TokenID) choice;
+        CommandID newCommandID = (CommandID) choice;
 
-        return CreateToken(newTokenID, parent);
+        return CreateToken(newCommandID, parent);
     }
 
-    public static GameObject CreateToken(TokenID newTokenID, Transform parent)
+    public static GameObject CreateToken(CommandID newCommandID, Transform parent)
     {
         GameObject newToken = GameObject.Instantiate(tokenPrefab, parent, false);
         TokenMan tm = newToken.GetComponent<TokenMan>();
-        TokenInfo tokenInfo = tokenDict[newTokenID];
+        TokenInfo tokenInfo = tokenDict[newCommandID];
 
         // Token
         tm.SetParams(tokenInfo);

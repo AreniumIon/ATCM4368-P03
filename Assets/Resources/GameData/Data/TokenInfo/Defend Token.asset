@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Defend Token
   entityType: 3
-  tokenID: 1
+  commandID: 1
   sprite: {fileID: 21300000, guid: c8ac5648b13123f40b6c7c8ce968cb9a, type: 3}
   minValue: 1
   maxValue: 10

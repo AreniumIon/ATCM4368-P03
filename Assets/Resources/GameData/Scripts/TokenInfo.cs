@@ -12,7 +12,7 @@ public class TokenInfo : EntityInfo
         entityType = EntityType.Token;
     }
 
-    public TokenID tokenID;
+    public CommandID commandID;
     public Sprite sprite;
 
     public int minValue = 1;

@@ -6,6 +6,7 @@ public class FoeActions : MonoBehaviour
 {
     FoeMan fm;
 
+
     public void SetParams(FoeMan fm)
     {
         this.fm = fm;

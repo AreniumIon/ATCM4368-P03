@@ -5,16 +5,16 @@ using static GameConstants;
 
 public static class CommandConstructor
 {
-    public static ICommand CreateCommand(TokenID tokenID, int value, Attackable target)
+    public static ICommand CreateCommand(CommandID commandID, int value, Attackable target)
     {
-        switch (tokenID)
+        switch (commandID)
         {
             default:
-            case TokenID.Attack:
+            case CommandID.Attack:
                 return CreateAttack(target, value);
-            case TokenID.Defend:
+            case CommandID.Defend:
                 return CreateDefend(target, value);
-            case TokenID.Heal:
+            case CommandID.Heal:
                 return CreateHeal(target, value);
         }
     }
