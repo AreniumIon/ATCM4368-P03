@@ -16,7 +16,8 @@ public class EntityHealthBar : MonoBehaviour
     public void SetParams(Attackable attackable)
     {
         this.attackable = attackable;
-        
+
+        // Events
         attackable.changeHealthEvent += UpdateHealthBar;
         attackable.changeBlockEvent += UpdateBlock;
     }
