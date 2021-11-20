@@ -22,18 +22,18 @@ public static class PlayerConstructor
     public static GameObject CreatePlayer(PlayerID newPlayerID, Transform parent)
     {
         GameObject newPlayer = GameObject.Instantiate(playerPrefab, parent, false);
+        PlayerMan pm = newPlayer.GetComponent<PlayerMan>();
         PlayerInfo playerInfo = playerDict[newPlayerID];
 
         // Model
         GameObject modelPrefab = playerInfo.model;
         GameObject.Instantiate(modelPrefab, newPlayer.transform);
 
-        // Player
-        PlayerMan pm = newPlayer.GetComponent<PlayerMan>();
-        pm.SetParams(playerInfo);
-
         // Health Bar
         EntityHealthBarConstructor.CreateHealthBar(pm.PlayerHealth, newPlayer.transform);
+
+        // Player
+        pm.SetParams(playerInfo);
 
         // Events
         CreatePlayerEvent(pm);

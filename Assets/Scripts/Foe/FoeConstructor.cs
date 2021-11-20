@@ -18,18 +18,18 @@ public static class FoeConstructor
     public static GameObject CreateFoe(FoeID newFoeID, Transform parent)
     {
         GameObject newFoe = GameObject.Instantiate(foePrefab, parent, false);
+        FoeMan fm = newFoe.GetComponent<FoeMan>();
         FoeInfo foeInfo = foeDict[newFoeID];
 
         // Model
         GameObject modelPrefab = foeInfo.model;
         GameObject.Instantiate(modelPrefab, newFoe.transform);
 
-        // Foe
-        FoeMan fm = newFoe.GetComponent<FoeMan>();
-        fm.SetParams(foeInfo);
-
         // Health Bar
         EntityHealthBarConstructor.CreateHealthBar(fm.FoeHealth, newFoe.transform);
+
+        // Foe
+        fm.SetParams(foeInfo);
 
         // Events
         CreateFoeEvent(fm);

@@ -12,6 +12,7 @@ public class SetupBattleState : TokenGameState
     public override void Enter()
     {
         CreateFoe();
+        SpawnTokens();
 
         activated = false;
     }
@@ -39,6 +40,22 @@ public class SetupBattleState : TokenGameState
         FoeMan foeMan = foeManObject.GetComponent<FoeMan>();
 
         gameMan.FoeMan = foeMan;
-        foeMan.SetParams((EntityInfo)foeInfo);
+    }
+
+    private void SpawnTokens()
+    {
+        for (int i = 0; i < startingTokenNumber; i++)
+        {
+            SpawnToken();
+        }
+    }
+
+    private void SpawnToken()
+    {
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        GameUIMan gameUIMan = ServiceLocator.GetService<GameUIMan>();
+
+        GameObject tokenManObj = TokenConstructor.CreateRandomToken(gameUIMan.PlayerTurnUI.tokenParent);
+        TokenMan tokenMan = tokenManObj.GetComponent<TokenMan>();
     }
 }

@@ -1543,7 +1543,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: 15}
+  m_AnchoredPosition: {x: 10, y: 45}
   m_SizeDelta: {x: 140, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &725154592
@@ -2810,6 +2810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasObj: {fileID: 1562658414}
   playerTurnTextUI: {fileID: 725154592}
+  tokenParent: {fileID: 8910819}
 --- !u!1 &1313975439
 GameObject:
   m_ObjectHideFlags: 0
@@ -4018,7 +4019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 687faee9571f906458307501c7bb198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingTokenNumber: 10
+  startingTokenNumber: 3
   foeInfo: {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
 --- !u!1 &1948571605
 GameObject:

@@ -39,6 +39,5 @@ public class SetupGameState : TokenGameState
         PlayerMan playerMan = playerManObject.GetComponent<PlayerMan>();
 
         gameMan.PlayerMan = playerMan;
-        playerMan.SetParams((EntityInfo)playerInfo);
     }
 }

@@ -20,6 +20,14 @@ public static class TokenConstructor
         return tokenDict[tokenID];
     }
 
+    public static GameObject CreateRandomToken(Transform parent)
+    {
+        int choice = UnityEngine.Random.Range(0, tokenDict.Count);
+        TokenID newTokenID = (TokenID) choice;
+
+        return CreateToken(newTokenID, parent);
+    }
+
     public static GameObject CreateToken(TokenID newTokenID, Transform parent)
     {
         GameObject newToken = GameObject.Instantiate(tokenPrefab, parent, false);
