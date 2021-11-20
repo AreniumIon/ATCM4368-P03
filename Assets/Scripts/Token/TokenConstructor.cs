@@ -31,10 +31,10 @@ public static class TokenConstructor
     public static GameObject CreateToken(TokenID newTokenID, Transform parent)
     {
         GameObject newToken = GameObject.Instantiate(tokenPrefab, parent, false);
+        TokenMan tm = newToken.GetComponent<TokenMan>();
         TokenInfo tokenInfo = tokenDict[newTokenID];
 
         // Token
-        TokenMan tm = newToken.GetComponent<TokenMan>();
         tm.SetParams(tokenInfo);
 
         // Events

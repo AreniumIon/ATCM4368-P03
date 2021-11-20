@@ -9,6 +9,8 @@ public class TokenMan : EntityMan
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI valueText;
 
+    public ICommand command;
+
     public override void SetParams(EntityInfo entityInfo)
     {
         this.entityInfo = entityInfo;
@@ -25,5 +27,21 @@ public class TokenMan : EntityMan
     protected override void Die()
     {
 
+    }
+
+    public void Activate()
+    {
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+
+        // Create command
+        Attackable target = gameMan.FoeMan.FoeHealth;
+        ICommand command = CommandConstructor.CreateCommand(tokenInfo.tokenID, 5, target);
+
+        // Execute
+        gameMan.CommandStack.ExecuteCommand(command);
+
+        // Finish turn
+        InputController inputController = gameMan.InputController;
+        inputController.InvokeConfirm();
     }
 }

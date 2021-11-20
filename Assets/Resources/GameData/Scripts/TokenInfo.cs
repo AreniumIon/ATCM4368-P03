@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameConstants;
+using System;
 
 [CreateAssetMenu(fileName = "New TokenInfo", menuName = "EntityInfo/TokenInfo")]
 public class TokenInfo : EntityInfo
