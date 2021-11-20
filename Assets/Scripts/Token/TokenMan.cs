@@ -26,7 +26,7 @@ public class TokenMan : EntityMan
 
     protected override void Die()
     {
-
+        base.Die();
     }
 
     public void Activate()
@@ -39,6 +39,9 @@ public class TokenMan : EntityMan
 
         // Execute
         gameMan.CommandStack.ExecuteCommand(command);
+
+        // Remove Token
+        Die();
 
         // Finish turn
         InputController inputController = gameMan.InputController;
