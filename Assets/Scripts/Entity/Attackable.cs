@@ -58,7 +58,9 @@ public abstract class Attackable : MonoBehaviour
     // Startup
     protected void SetParams()
     {
+        // Trigger events
         ChangeHealthEvent();
+        ChangeBlockEvent();
     }
 
     // Methods

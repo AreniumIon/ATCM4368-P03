@@ -12,8 +12,12 @@ public class FoeHealth : Attackable
     {
         this.fm = fm;
 
+        // Values
         MaxHealth = fm.foeInfo.health;
         Health = MaxHealth;
+
+        // Events
+        FoeTurnState.FoeTurnBegan += ClearBlock;
 
         base.SetParams();
     }

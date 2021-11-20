@@ -12,8 +12,12 @@ public class PlayerHealth : Attackable
     {
         this.pm = pm;
 
+        // Values
         MaxHealth = pm.playerInfo.health;
         Health = MaxHealth;
+
+        // Events
+        PlayerTurnState.PlayerTurnBegan += ClearBlock;
 
         base.SetParams();
     }
