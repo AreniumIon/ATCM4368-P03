@@ -32,6 +32,9 @@ public static class PlayerConstructor
         PlayerMan pm = newPlayer.GetComponent<PlayerMan>();
         pm.SetParams(playerInfo);
 
+        // Health Bar
+        EntityHealthBarConstructor.CreateHealthBar(pm.PlayerHealth, newPlayer.transform);
+
         // Events
         CreatePlayerEvent(pm);
 

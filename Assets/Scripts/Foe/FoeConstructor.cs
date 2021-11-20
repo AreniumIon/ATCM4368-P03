@@ -28,6 +28,9 @@ public static class FoeConstructor
         FoeMan fm = newFoe.GetComponent<FoeMan>();
         fm.SetParams(foeInfo);
 
+        // Health Bar
+        EntityHealthBarConstructor.CreateHealthBar(fm.FoeHealth, newFoe.transform);
+
         // Events
         CreateFoeEvent(fm);
 
