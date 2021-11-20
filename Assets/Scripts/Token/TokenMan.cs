@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static GameConstants;
 
 public class TokenMan : EntityMan
 {
@@ -34,7 +35,7 @@ public class TokenMan : EntityMan
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
 
         // Create command
-        Attackable target = gameMan.FoeMan.FoeHealth;
+        Attackable target = GetTarget(tokenInfo.tokenID);
         ICommand command = CommandConstructor.CreateCommand(tokenInfo.tokenID, 5, target);
 
         // Execute
@@ -46,5 +47,21 @@ public class TokenMan : EntityMan
         // Finish turn
         InputController inputController = gameMan.InputController;
         inputController.InvokeConfirm();
+    }
+
+    private Attackable GetTarget(TokenID tokenID)
+    {
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+
+        switch (tokenID)
+        {
+            default:
+            case TokenID.Attack:
+                return gameMan.FoeMan.FoeHealth;
+            case TokenID.Defend:
+                return gameMan.PlayerMan.PlayerHealth;
+            case TokenID.Heal:
+                return gameMan.PlayerMan.PlayerHealth;
+        }
     }
 }
