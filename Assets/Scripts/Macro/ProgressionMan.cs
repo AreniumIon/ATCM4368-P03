@@ -4,5 +4,27 @@ using UnityEngine;
 
 public class ProgressionMan : MonoBehaviour
 {
-    // TODO: track 3 battles
+    [SerializeField] List<FoeInfo> foes = new List<FoeInfo>();
+
+    int battleIndex = -1;
+
+    private void Start()
+    {
+        
+    }
+
+    public void AdvanceBattle()
+    {
+        battleIndex++;
+    }
+
+    public bool HasCurrentFoe()
+    {
+        return foes.Count > battleIndex;
+    }
+
+    public FoeInfo GetCurrentFoe()
+    {
+        return foes[battleIndex];
+    }
 }

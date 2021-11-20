@@ -752,6 +752,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992917dda7844e6458ff8e6066a29287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  foes:
+  - {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
+  - {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
+  - {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
 --- !u!4 &414053437
 Transform:
   m_ObjectHideFlags: 0
@@ -3142,6 +3146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4af3cee0bd2a6fa46a22230647eaa297, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxTokens: 3
 --- !u!114 &1845818757
 MonoBehaviour:
   m_ObjectHideFlags: 0
