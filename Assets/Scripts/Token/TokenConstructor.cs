@@ -18,8 +18,8 @@ public static class TokenConstructor
     // Proper solution would be store a Dictionary<CommandID, int>, where int represents weighting.
     static List<CommandID> tokenWeights = new List<CommandID>()
     {
-        {CommandID.Attack}, {CommandID.Attack},
-        {CommandID.Defend},
+        {CommandID.Attack}, {CommandID.Attack}, {CommandID.Attack},
+        {CommandID.Defend}, {CommandID.Defend},
         {CommandID.Heal},
     };
 
@@ -40,8 +40,20 @@ public static class TokenConstructor
 
     public static GameObject CreateRandomToken(Transform parent)
     {
-        int choice = UnityEngine.Random.Range(0, tokenWeights.Count);
-        CommandID newCommandID = tokenWeights[choice];
+        List<CommandID> options = new List<CommandID>(tokenWeights);
+
+        // Decrease weight of existing tokens
+        PlayerTokens playerTokens = ServiceLocator.GetService<GameMan>().PlayerMan.PlayerTokens;
+        foreach (TokenMan tm in playerTokens.tokens)
+        {
+            CommandID cid = tm.tokenInfo.commandID;
+            if (options.Contains(cid))
+                options.Remove(cid);
+        }
+
+        // Get random choice
+        int choice = UnityEngine.Random.Range(0, options.Count);
+        CommandID newCommandID = options[choice];
 
         return CreateToken(newCommandID, parent);
     }
