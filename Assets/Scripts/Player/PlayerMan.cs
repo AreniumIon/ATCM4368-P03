@@ -23,6 +23,6 @@ public class PlayerMan : EntityMan
 
     protected override void Die()
     {
-
+        base.Die();
     }
 }

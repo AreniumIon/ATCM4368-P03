@@ -24,6 +24,6 @@ public class FoeMan : EntityMan
 
     protected override void Die()
     {
-
+        base.Die();
     }
 }
