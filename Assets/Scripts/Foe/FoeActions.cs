@@ -18,29 +18,22 @@ public class FoeActions : MonoBehaviour
         actions = fm.foeInfo.actions;
     }
 
-    public void DoRandomAction()
+    public void DoNextAction()
     {
         // Get command
-        ActionInfo actionInfo = GetRandomAction();
+        ActionInfo actionInfo = GetNextAction();
         ICommand command = CommandConstructor.CreateCommand(actionInfo.commandID, actionInfo.value, GetTarget(actionInfo.commandID));
 
         ServiceLocator.GetService<GameMan>().CommandStack.ExecuteCommand(command);
         lastAction = actionInfo;
     }
 
-    private ActionInfo GetRandomAction()
+    private ActionInfo GetNextAction()
     {
-        // Can't do lastAction
-        List<ActionInfo> options = new List<ActionInfo>();
-        foreach (ActionInfo ai in actions)
-        {
-            if (ai != lastAction)
-                options.Add(ai);
-        }
+        int lastActionIndex = actions.IndexOf(lastAction);
+        int nextActionIndex = (lastActionIndex + 1) % actions.Count;
 
-        // Get random
-        int choice = Random.Range(0, options.Count);
-        ActionInfo action = options[choice];
+        ActionInfo action = actions[nextActionIndex];
 
         return action;
     }
