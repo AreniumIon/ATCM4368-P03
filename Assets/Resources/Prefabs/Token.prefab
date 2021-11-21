@@ -283,7 +283,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityInfo: {fileID: 0}
   icon: {fileID: 5379340449803384632}
-  valueText: {fileID: 5379340448420306756}
+  amountText: {fileID: 5379340448420306756}
 --- !u!1 &5379340449803384634
 GameObject:
   m_ObjectHideFlags: 0

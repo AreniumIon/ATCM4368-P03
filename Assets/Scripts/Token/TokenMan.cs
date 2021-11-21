@@ -4,19 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static GameConstants;
+using System;
 
 public class TokenMan : EntityMan
 {
     [SerializeField] Image icon;
-    [SerializeField] TextMeshProUGUI valueText;
+    [SerializeField] TextMeshProUGUI amountText;
 
-    public ICommand command;
+    int amount = 0;
+    private int Amount
+    { 
+        get { return amount; }
+        set { amount = value;  ChangeAmountEvent(); }
+    }
+
+    public event Action<int> changeAmountEvent; // amount
+    private void ChangeAmountEvent()
+    {
+        changeAmountEvent?.Invoke(Amount);
+    }
+
 
     public override void SetParams(EntityInfo entityInfo)
     {
         this.entityInfo = entityInfo;
 
         icon.sprite = tokenInfo.sprite;
+
+        // Events
+        changeAmountEvent += UpdateAmountText;
+
+        // Initial values
+        RandomizeAmount();
     }
 
     public TokenInfo tokenInfo
@@ -30,13 +49,24 @@ public class TokenMan : EntityMan
         base.Die();
     }
 
+
+    private void RandomizeAmount()
+    {
+        Amount = UnityEngine.Random.Range(tokenInfo.minValue, tokenInfo.maxValue);
+    }
+
+    private void UpdateAmountText(int amount)
+    {
+        amountText.text = amount.ToString();
+    }
+
     public void Activate()
     {
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
 
         // Create command
         Attackable target = GetTarget(tokenInfo.commandID);
-        ICommand command = CommandConstructor.CreateCommand(tokenInfo.commandID, 5, target);
+        ICommand command = CommandConstructor.CreateCommand(tokenInfo.commandID, Amount, target);
 
         // Execute
         gameMan.CommandStack.ExecuteCommand(command);
