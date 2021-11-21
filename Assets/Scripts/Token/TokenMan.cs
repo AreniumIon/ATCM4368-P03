@@ -77,6 +77,7 @@ public class TokenMan : EntityMan
 
         // Finish turn
         InputController inputController = gameMan.InputController;
+        Debug.Log("invoke confirm from tokenMan");
         inputController.InvokeConfirm();
     }
 

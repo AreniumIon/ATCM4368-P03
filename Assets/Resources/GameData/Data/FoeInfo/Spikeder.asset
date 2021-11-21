@@ -16,7 +16,7 @@ MonoBehaviour:
   entityType: 2
   foeID: 0
   model: {fileID: 876518473413982347, guid: 76c28b6bbd3098445afbe2dacf69fe66, type: 3}
-  health: 20
+  health: 1
   actions:
   - {fileID: 11400000, guid: 15707690f7e70934fa0aa4d2f5419845, type: 2}
   - {fileID: 11400000, guid: ea185a8a09f588b4bb4e368805e8b773, type: 2}

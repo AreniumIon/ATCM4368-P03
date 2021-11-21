@@ -28,6 +28,10 @@ public class FoeMan : EntityMan
 
     protected override void Die()
     {
+        // Remove gameMan reference
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        if (gameMan.FoeMan == this)
+            gameMan.FoeMan = null;
         base.Die();
     }
 }
