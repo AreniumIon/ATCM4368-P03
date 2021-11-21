@@ -2954,7 +2954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1816533273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3197,7 +3197,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingTokenNumber: 3
-  foeInfo: {fileID: 11400000, guid: 7414fe695300d8b4e9b044e55e1e892e, type: 2}
 --- !u!1 &1948571605
 GameObject:
   m_ObjectHideFlags: 0

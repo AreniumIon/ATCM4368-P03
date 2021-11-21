@@ -32,4 +32,10 @@ public static class GameConstants
         Heal = 2,
     }
 
+    public static Dictionary<CommandID, Sprite> commandSprites = new Dictionary<CommandID, Sprite>()
+    {
+        {CommandID.Attack, Resources.Load<Sprite>("Sprites/Attack Icon")},
+        {CommandID.Defend, Resources.Load<Sprite>("Sprites/Defend Icon")},
+        {CommandID.Heal, Resources.Load<Sprite>("Sprites/Heal Icon")},
+    };
 }

@@ -10,7 +10,12 @@ public class FoeActions : MonoBehaviour
 
     List<ActionInfo> actions = new List<ActionInfo>();
 
-    public ActionInfo nextAction { get; private set; }
+    private ActionInfo nextAction;
+    public ActionInfo NextAction
+    { 
+        get { return nextAction; }
+        set { nextAction = value; ChangeNextActionEvent(nextAction); }
+    }
 
     // Events
     public event Action<ActionInfo> doActionEvent; //actionInfo
@@ -19,6 +24,11 @@ public class FoeActions : MonoBehaviour
         doActionEvent?.Invoke(actionInfo);
     }
 
+    public event Action<ActionInfo> changeNextActionEvent; //actionInfo
+    private void ChangeNextActionEvent(ActionInfo actionInfo)
+    {
+        changeNextActionEvent?.Invoke(actionInfo);
+    }
 
 
     public void SetParams(FoeMan fm)
@@ -27,32 +37,29 @@ public class FoeActions : MonoBehaviour
 
         actions = fm.foeInfo.actions;
 
-        AdvanceNextAction(null);
-
-        // Events
-        doActionEvent += AdvanceNextAction;
+        AdvanceNextAction();
     }
 
     public void DoAction()
     {
         // Get command
-        ICommand command = CommandConstructor.CreateCommand(nextAction.commandID, nextAction.value, GetTarget(nextAction.commandID));
+        ICommand command = CommandConstructor.CreateCommand(NextAction.commandID, NextAction.value, GetTarget(NextAction.commandID));
 
         ServiceLocator.GetService<GameMan>().CommandStack.ExecuteCommand(command);
 
-        DoActionEvent(nextAction);
+        DoActionEvent(NextAction);
 
+        AdvanceNextAction();
     }
 
-    // Subscribed to doActionEvent
-    private void AdvanceNextAction(ActionInfo actionInfo)
+    private void AdvanceNextAction()
     {
-        int currentIndex = actions.IndexOf(nextAction);
+        int currentIndex = actions.IndexOf(NextAction);
         int advancedIndex = (currentIndex + 1) % actions.Count;
 
         ActionInfo action = actions[advancedIndex];
 
-        nextAction = action;
+        NextAction = action;
     }
 
     private Attackable GetTarget(CommandID commandID)
