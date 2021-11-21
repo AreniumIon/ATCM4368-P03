@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static GameConstants;
+using System;
 
 public class FoeActions : MonoBehaviour
 {
@@ -9,33 +10,49 @@ public class FoeActions : MonoBehaviour
 
     List<ActionInfo> actions = new List<ActionInfo>();
 
-    ActionInfo lastAction;
+    public ActionInfo nextAction { get; private set; }
+
+    // Events
+    public event Action<ActionInfo> doActionEvent; //actionInfo
+    private void DoActionEvent(ActionInfo actionInfo)
+    {
+        doActionEvent?.Invoke(actionInfo);
+    }
+
+
 
     public void SetParams(FoeMan fm)
     {
         this.fm = fm;
 
         actions = fm.foeInfo.actions;
+
+        AdvanceNextAction(null);
+
+        // Events
+        doActionEvent += AdvanceNextAction;
     }
 
-    public void DoNextAction()
+    public void DoAction()
     {
         // Get command
-        ActionInfo actionInfo = GetNextAction();
-        ICommand command = CommandConstructor.CreateCommand(actionInfo.commandID, actionInfo.value, GetTarget(actionInfo.commandID));
+        ICommand command = CommandConstructor.CreateCommand(nextAction.commandID, nextAction.value, GetTarget(nextAction.commandID));
 
         ServiceLocator.GetService<GameMan>().CommandStack.ExecuteCommand(command);
-        lastAction = actionInfo;
+
+        DoActionEvent(nextAction);
+
     }
 
-    private ActionInfo GetNextAction()
+    // Subscribed to doActionEvent
+    private void AdvanceNextAction(ActionInfo actionInfo)
     {
-        int lastActionIndex = actions.IndexOf(lastAction);
-        int nextActionIndex = (lastActionIndex + 1) % actions.Count;
+        int currentIndex = actions.IndexOf(nextAction);
+        int advancedIndex = (currentIndex + 1) % actions.Count;
 
-        ActionInfo action = actions[nextActionIndex];
+        ActionInfo action = actions[advancedIndex];
 
-        return action;
+        nextAction = action;
     }
 
     private Attackable GetTarget(CommandID commandID)

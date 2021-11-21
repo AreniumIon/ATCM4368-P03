@@ -53,7 +53,7 @@ public class FoeTurnState : TokenGameState
 
         if (foeMan != null)
         {
-            foeMan.FoeActions.DoNextAction();
+            foeMan.FoeActions.DoAction();
         }
     }
 }
