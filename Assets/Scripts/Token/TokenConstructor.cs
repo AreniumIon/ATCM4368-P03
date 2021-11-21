@@ -15,6 +15,14 @@ public static class TokenConstructor
         {CommandID.Heal, Resources.Load<TokenInfo>("GameData/Data/TokenInfo/Heal Token")},
     };
 
+    // Proper solution would be store a Dictionary<CommandID, int>, where int represents weighting.
+    static List<CommandID> tokenWeights = new List<CommandID>()
+    {
+        {CommandID.Attack}, {CommandID.Attack},
+        {CommandID.Defend},
+        {CommandID.Heal},
+    };
+
     public static TokenInfo GetTokenInfo(CommandID commandID)
     {
         return tokenDict[commandID];
@@ -32,8 +40,8 @@ public static class TokenConstructor
 
     public static GameObject CreateRandomToken(Transform parent)
     {
-        int choice = UnityEngine.Random.Range(0, tokenDict.Count);
-        CommandID newCommandID = (CommandID) choice;
+        int choice = UnityEngine.Random.Range(0, tokenWeights.Count);
+        CommandID newCommandID = tokenWeights[choice];
 
         return CreateToken(newCommandID, parent);
     }

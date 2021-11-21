@@ -32,6 +32,7 @@ public class TokenMan : EntityMan
         icon.sprite = tokenInfo.sprite;
 
         // Events
+        PlayerTurnState.PlayerTurnBegan += RandomizeAmount;
         changeAmountEvent += UpdateAmountText;
 
         // Initial values
