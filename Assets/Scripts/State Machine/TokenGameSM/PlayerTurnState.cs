@@ -44,7 +44,12 @@ public class PlayerTurnState : TokenGameState
         // Check if foe exists
         if (ServiceLocator.GetService<GameMan>().FoeMan == null)
         {
-            StateMachine.ChangeState<WinState>();
+            GameMan gameMan = ServiceLocator.GetService<GameMan>();
+
+            if (gameMan.ProgressionMan.HasNextFoe())
+                StateMachine.ChangeState<SetupBattleState>();
+            else
+                StateMachine.ChangeState<WinState>();
         }
         else
         {

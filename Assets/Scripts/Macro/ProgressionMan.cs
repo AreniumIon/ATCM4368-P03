@@ -18,9 +18,9 @@ public class ProgressionMan : MonoBehaviour
         battleIndex++;
     }
 
-    public bool HasCurrentFoe()
+    public bool HasNextFoe()
     {
-        return foes.Count > battleIndex;
+        return foes.Count > battleIndex + 1;
     }
 
     public FoeInfo GetCurrentFoe()
