@@ -12,6 +12,8 @@ public class FoeTurnState : TokenGameState
 
     public override void Enter()
     {
+        Debug.Log("foe turn enter");
+
         FoeTurnBegan?.Invoke();
 
         StartCoroutine(FoeThinkingRoutine(pauseDuration));

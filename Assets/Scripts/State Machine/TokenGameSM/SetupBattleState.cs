@@ -11,6 +11,8 @@ public class SetupBattleState : TokenGameState
 
     public override void Enter()
     {
+        Debug.Log("setup battle state");
+
         StartCoroutine(SetupBattleRoutine(setupDuration));
 
         activated = false;
