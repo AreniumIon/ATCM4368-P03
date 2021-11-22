@@ -5,17 +5,13 @@ using UnityEngine;
 public class SetupBattleState : TokenGameState
 {
     [SerializeField] int startingTokenNumber = 3;
+    [SerializeField] float setupDuration = 1.5f;
 
     bool activated = false;
 
     public override void Enter()
     {
-        GameMan gameMan = ServiceLocator.GetService<GameMan>();
-
-        gameMan.ProgressionMan.AdvanceBattle();
-
-        CreateFoe();
-        SpawnTokens();
+        StartCoroutine(SetupBattleRoutine(setupDuration));
 
         activated = false;
     }
@@ -34,6 +30,18 @@ public class SetupBattleState : TokenGameState
         activated = false;
     }
 
+    IEnumerator SetupBattleRoutine(float pauseDuration)
+    {
+        yield return new WaitForSeconds(pauseDuration);
+
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        gameMan.ProgressionMan.AdvanceBattle();
+
+        CreateFoe();
+        ClearTokens();
+        SpawnTokens();
+    }
+
     private void CreateFoe()
     {
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
@@ -43,6 +51,13 @@ public class SetupBattleState : TokenGameState
         FoeMan foeMan = foeManObject.GetComponent<FoeMan>();
 
         gameMan.FoeMan = foeMan;
+    }
+
+    private void ClearTokens()
+    {
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        PlayerTokens playerTokens = gameMan.PlayerMan.PlayerTokens;
+        playerTokens.DestroyTokens();
     }
 
     private void SpawnTokens()

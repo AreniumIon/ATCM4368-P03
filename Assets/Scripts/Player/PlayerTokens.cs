@@ -25,4 +25,14 @@ public class PlayerTokens : MonoBehaviour
     {
         tokens.Remove((TokenMan) em);
     }
+
+    public void DestroyTokens()
+    {
+        for (int i = tokens.Count - 1; i >= 0; i--)
+        {
+            TokenMan tm = tokens[i];
+            RemoveToken(tm);
+            Destroy(tm.gameObject);
+        }
+    }
 }

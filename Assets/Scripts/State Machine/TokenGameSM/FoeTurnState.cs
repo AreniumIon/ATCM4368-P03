@@ -12,7 +12,6 @@ public class FoeTurnState : TokenGameState
 
     public override void Enter()
     {
-        Debug.Log("Enemy Turn: ...Enter");
         FoeTurnBegan?.Invoke();
 
         StartCoroutine(FoeThinkingRoutine(pauseDuration));
@@ -20,7 +19,6 @@ public class FoeTurnState : TokenGameState
 
     public override void Exit()
     {
-        Debug.Log("Enemy Turn: Exit...");
         FoeTurnEnded?.Invoke();
     }
 
