@@ -16,7 +16,7 @@ public class PlayerTurnState : TokenGameState
     public override void Enter()
     {
         Debug.Log("player turn enter");
-        playerTurnCount++;
+        playerTurnCount = 1;
 
         CheckSpawnToken();
 
@@ -62,7 +62,7 @@ public class PlayerTurnState : TokenGameState
     {
         PlayerMan playerMan = ServiceLocator.GetService<GameMan>().PlayerMan;
 
-        if (playerMan.PlayerTokens.tokens.Count < maxTokens && playerTurnCount > 1)
+        if (playerMan.PlayerTokens.tokens.Count < maxTokens)
         {
             Debug.Log("Creating token");
             TokenConstructor.CreatePlayerToken();
