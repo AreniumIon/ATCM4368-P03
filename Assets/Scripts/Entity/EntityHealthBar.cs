@@ -11,6 +11,7 @@ public class EntityHealthBar : MonoBehaviour
 
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] GameObject blockObj;
     [SerializeField] TextMeshProUGUI blockText;
 
     public void SetParams(Attackable attackable)
@@ -38,6 +39,9 @@ public class EntityHealthBar : MonoBehaviour
     void UpdateBlock(int block)
     {
         blockText.text = block.ToString();
+
+        // Block icon invisible if no block
+        blockObj.SetActive(block != 0);
     }
 
     void DestroyHealthBar()
