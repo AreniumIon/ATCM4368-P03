@@ -4,11 +4,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class PlayerTurnUI : MonoBehaviour
+public class TurnUI : MonoBehaviour
 {
-    [SerializeField] Image darkenImage = null; 
 
-    public Transform tokenParent;
+    [SerializeField] GameObject canvasObj = null;
+    [SerializeField] TextMeshProUGUI turnTextUI = null;
 
     private void OnEnable()
     {
@@ -24,13 +24,11 @@ public class PlayerTurnUI : MonoBehaviour
 
     private void OnPlayerTurnBegan()
     {
-        darkenImage.gameObject.SetActive(false);
+        turnTextUI.text = "Turn   " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnState>().PlayerTurnCount;
     }
 
     private void OnPlayerTurnEnded()
     {
-        darkenImage.gameObject.SetActive(true);
-    }
 
-    // TODO: Coroutine at start and end of player turn to fade image alpha value in/out
+    }
 }
