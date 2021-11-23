@@ -7,8 +7,6 @@ public class FoeTurnUI : MonoBehaviour
 {
     [SerializeField] GameObject canvasObj;
 
-    [SerializeField] TextMeshProUGUI foeThinkingText = null;
-
     private void OnEnable()
     {
         FoeTurnState.FoeTurnBegan += OnFoeTurnBegan;
