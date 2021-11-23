@@ -20,7 +20,7 @@ public static class GameConstants
 
     public enum FoeID
     { 
-        Spikeder = 0,
+        Quadpod = 0,
         Hambiter = 1,
         Sunder = 2,
     }

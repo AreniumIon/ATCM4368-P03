@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 876518473413982346}
   - component: {fileID: 272930114687484462}
   m_Layer: 0
-  m_Name: Spikeder Model
+  m_Name: Quadpod Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

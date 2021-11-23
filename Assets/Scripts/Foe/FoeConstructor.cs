@@ -10,7 +10,7 @@ public static class FoeConstructor
 
     static Dictionary<FoeID, FoeInfo> foeDict = new Dictionary<FoeID, FoeInfo>()
     {
-        {FoeID.Spikeder, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Spikeder")},
+        {FoeID.Quadpod, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Quadpod")},
         {FoeID.Hambiter, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Hambiter")},
         {FoeID.Sunder, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Sunder")},
     };
