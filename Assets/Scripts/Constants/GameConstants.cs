@@ -22,7 +22,7 @@ public static class GameConstants
     { 
         Spikeder = 0,
         Hambiter = 1,
-        Venus_Fly_Trap = 2,
+        Sunder = 2,
     }
 
     public enum CommandID

@@ -11,8 +11,8 @@ public static class FoeConstructor
     static Dictionary<FoeID, FoeInfo> foeDict = new Dictionary<FoeID, FoeInfo>()
     {
         {FoeID.Spikeder, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Spikeder")},
-        //{FoeID.Hambiter, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Hambiter")},
-        //{FoeID.Venus_Fly_Trap, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Venus_Fly_Trap")},
+        {FoeID.Hambiter, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Hambiter")},
+        {FoeID.Sunder, Resources.Load<FoeInfo>("GameData/Data/FoeInfo/Sunder")},
     };
 
     public static GameObject CreateFoe(FoeID newFoeID, Transform parent)

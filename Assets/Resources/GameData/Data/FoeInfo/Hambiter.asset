@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a07790e84ebb87c4c9bb668fe0e19ec6, type: 3}
+  m_Name: Hambiter
+  m_EditorClassIdentifier: 
+  name: Hambiter
+  entityType: 2
+  foeID: 1
+  model: {fileID: 876518473413982347, guid: 0ad9f6b01aa3d7d469a848f18eba6d9c, type: 3}
+  health: 25
+  actions:
+  - {fileID: 11400000, guid: aa75b133715f62f40997196ee8ac2146, type: 2}
+  - {fileID: 11400000, guid: 16bd5f445faa7fc468a1dc131e026dbf, type: 2}
+  - {fileID: 11400000, guid: b278dc8d45b5532458e310c1744d6231, type: 2}
