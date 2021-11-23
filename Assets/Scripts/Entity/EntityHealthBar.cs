@@ -41,7 +41,8 @@ public class EntityHealthBar : MonoBehaviour
         blockText.text = block.ToString();
 
         // Block icon invisible if no block
-        blockObj.SetActive(block != 0);
+        if (blockObj != null)
+            blockObj.SetActive(block != 0);
     }
 
     void DestroyHealthBar()
