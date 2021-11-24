@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Hambiter Heal
   m_EditorClassIdentifier: 
   commandID: 2
-  value: 5
+  value: 4
