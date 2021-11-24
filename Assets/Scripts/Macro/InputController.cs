@@ -8,7 +8,7 @@ public class InputController : MonoBehaviour
     public void InvokeConfirm() { PressedConfirm?.Invoke(); }
     public event Action PressedConfirm = delegate { };
 
-    public void InvokeCancel() { PressedCancel?.Invoke(); }
+    public void InvokeCancel() { PressedCancel?.Invoke(); Debug.Log("cancel"); }
     public event Action PressedCancel = delegate { };
 
     public void InvokeLeft() { PressedLeft?.Invoke(); }
