@@ -59,7 +59,8 @@ public class FoeActionIndicator : MonoBehaviour
     private void UpdateTarget(ActionInfo actionInfo)
     {
         Attackable target = GetTarget(actionInfo.commandID);
-        targetPos = target.transform.position;
+        if (target != null)
+            targetPos = target.transform.position;
     }
 
     private void ResetPosition(ActionInfo actionInfo)
