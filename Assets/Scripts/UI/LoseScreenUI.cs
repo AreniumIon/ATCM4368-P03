@@ -27,6 +27,7 @@ public class LoseScreenUI : MonoBehaviour
     private void OnLoseStateBegan()
     {
         canvasObj.SetActive(true);
+        AudioHelper.PlayClip2D(Resources.Load<AudioClip>("Audio/Lose"), AudioLibrary.AUDIO_VOLUME);
     }
 
     private void OnLoseStateEnded()

@@ -17,14 +17,7 @@ public class GameUIMan : MonoBehaviour
 
     private void Awake()
     {
-        if (ServiceLocator.HasService<GameUIMan>())
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            ServiceLocator.Register<GameUIMan>(this);
-        }
+        ServiceLocator.Register<GameUIMan>(this);
     }
 
     private void Start()

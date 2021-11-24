@@ -17,13 +17,6 @@ public class GameMan : MonoBehaviour
     
     private void Awake()
     {
-        if (ServiceLocator.HasService<GameMan>())
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            ServiceLocator.Register<GameMan>(this);
-        }
+        ServiceLocator.Register<GameMan>(this);
     }
 }

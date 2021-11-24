@@ -27,6 +27,7 @@ public class WinScreenUI : MonoBehaviour
     private void OnWinStateBegan()
     {
         canvasObj.SetActive(true);
+        AudioHelper.PlayClip2D(Resources.Load<AudioClip>("Audio/Win"), AudioLibrary.AUDIO_VOLUME);
     }
 
     private void OnWinStateEnded()
