@@ -2414,7 +2414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63db10321a09d4b4a94964b9f1afc8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tokenCover: {fileID: 1457972729}
+  thoughtBubble: {fileID: 520070670}
+  thoughtBubbleCover: {fileID: 1457972729}
   coverAlpha: 0.5
   fadeTime: 0.25
   tokenParent: {fileID: 1855747687}
@@ -2551,7 +2552,7 @@ GameObject:
   - component: {fileID: 1457972728}
   - component: {fileID: 1457972729}
   m_Layer: 5
-  m_Name: Token Cover
+  m_Name: Thought Bubble Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

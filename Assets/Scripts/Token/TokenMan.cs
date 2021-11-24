@@ -11,6 +11,8 @@ public class TokenMan : EntityMan
     [SerializeField] Image icon;
     [SerializeField] TextMeshProUGUI amountText;
 
+    static float MOVE_TIME = 1f;
+
     int amount = 0;
     private int Amount
     { 
@@ -63,13 +65,23 @@ public class TokenMan : EntityMan
 
     public void Activate()
     {
-        GameMan gameMan = ServiceLocator.GetService<GameMan>();
-
         // Create command
         Attackable target = GetTarget(tokenInfo.commandID);
         ICommand command = CommandConstructor.CreateCommand(tokenInfo.commandID, Amount, target);
 
+        // Move animation
+        StartCoroutine(MathFunctions.MoveTo(transform, target.transform.position, MOVE_TIME));
+
         // Execute
+        StartCoroutine(DelayActivate(command, MOVE_TIME));
+    }
+
+
+    private IEnumerator DelayActivate(ICommand command, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
         gameMan.CommandStack.ExecuteCommand(command);
 
         // Remove Token
@@ -80,6 +92,13 @@ public class TokenMan : EntityMan
         Debug.Log("invoke confirm from tokenMan");
         inputController.InvokeConfirm();
     }
+
+
+
+
+
+
+
 
     private Attackable GetTarget(CommandID commandID)
     {
