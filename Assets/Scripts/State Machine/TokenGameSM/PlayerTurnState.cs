@@ -8,6 +8,8 @@ public class PlayerTurnState : TokenGameState
     public static event Action PlayerTurnBegan;
     public static event Action PlayerTurnEnded;
 
+    public static float AFTER_TURN_DELAY = 1f;
+
     int playerTurnCount = 0;
     public int PlayerTurnCount { get { return playerTurnCount; } }
 
@@ -37,11 +39,13 @@ public class PlayerTurnState : TokenGameState
 
     void OnPressedConfirm()
     {
-        AdvanceState();
+        StartCoroutine(AdvanceState());
     }
 
-    void AdvanceState()
+    private IEnumerator AdvanceState()
     {
+        yield return new WaitForSeconds(AFTER_TURN_DELAY);
+
         // Check if foe exists
         if (ServiceLocator.GetService<GameMan>().FoeMan == null)
         {

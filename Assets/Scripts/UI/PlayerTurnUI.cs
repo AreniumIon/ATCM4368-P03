@@ -16,13 +16,11 @@ public class PlayerTurnUI : MonoBehaviour
     private void OnEnable()
     {
         PlayerTurnState.PlayerTurnBegan += OnPlayerTurnBegan;
-        PlayerTurnState.PlayerTurnEnded += OnPlayerTurnEnded;
     }
 
     private void OnDisable()
     {
         PlayerTurnState.PlayerTurnBegan -= OnPlayerTurnBegan;
-        PlayerTurnState.PlayerTurnEnded -= OnPlayerTurnEnded;
     }
 
     private void Start()
@@ -35,9 +33,12 @@ public class PlayerTurnUI : MonoBehaviour
     private void OnPlayerTurnBegan()
     {
         StartCoroutine(MathFunctions.FadeImage(thoughtBubbleCover, coverAlpha, 0f, fadeTime));
+
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        gameMan.InputController.PressedConfirm += OnConfirm;
     }
 
-    private void OnPlayerTurnEnded()
+    private void OnConfirm()
     {
         StartCoroutine(MathFunctions.FadeImage(thoughtBubbleCover, 0f, coverAlpha, fadeTime));
     }

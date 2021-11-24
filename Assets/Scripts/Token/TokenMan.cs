@@ -12,7 +12,6 @@ public class TokenMan : EntityMan
     [SerializeField] TextMeshProUGUI amountText;
 
     static float MOVE_SPEED = 1.6f;
-    static float DELAY_TIME = 1f;
 
     int amount = 0;
     private int Amount
@@ -74,7 +73,12 @@ public class TokenMan : EntityMan
         StartCoroutine(MathFunctions.MoveToKick(transform, target.transform.position, MOVE_SPEED));
 
         // Execute
-        StartCoroutine(DelayActivate(command, DELAY_TIME));
+        StartCoroutine(DelayActivate(command, PlayerTurnState.AFTER_TURN_DELAY));
+
+        // Finish turn
+        GameMan gameMan = ServiceLocator.GetService<GameMan>();
+        InputController inputController = gameMan.InputController;
+        inputController.InvokeConfirm();
     }
 
 
@@ -87,11 +91,6 @@ public class TokenMan : EntityMan
 
         // Remove Token
         DeathEvent();
-
-        // Finish turn
-        InputController inputController = gameMan.InputController;
-        Debug.Log("invoke confirm from tokenMan");
-        inputController.InvokeConfirm();
     }
 
 

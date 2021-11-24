@@ -7,6 +7,7 @@ using System;
 public static class FoeConstructor
 {
     static GameObject foePrefab = Resources.Load<GameObject>("Prefabs/Foe");
+    static GameObject foeActionIndicator = Resources.Load<GameObject>("Prefabs/FoeActionIndicator");
 
     static Dictionary<FoeID, FoeInfo> foeDict = new Dictionary<FoeID, FoeInfo>()
     {
@@ -24,6 +25,10 @@ public static class FoeConstructor
         // Model
         GameObject modelPrefab = foeInfo.model;
         GameObject.Instantiate(modelPrefab, newFoe.transform);
+
+        // Action Indicator
+        GameObject actionIndicator = GameObject.Instantiate(foeActionIndicator, newFoe.transform);
+        fm.FoeActionIndicator = actionIndicator.GetComponent<FoeActionIndicator>();
 
         // Health Bar
         EntityHealthBarConstructor.CreateHealthBar(fm.FoeHealth, newFoe.transform);

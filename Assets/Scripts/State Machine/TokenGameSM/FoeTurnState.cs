@@ -8,7 +8,7 @@ public class FoeTurnState : TokenGameState
     public static event Action FoeTurnBegan;
     public static event Action FoeTurnEnded;
 
-    [SerializeField] float pauseDuration = 1.5f;
+    [SerializeField] float pauseDuration = 1f;
 
     public override void Enter()
     {
