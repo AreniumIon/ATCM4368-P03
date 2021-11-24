@@ -33,6 +33,11 @@ public class FoeActionIndicator : MonoBehaviour
         FoeTurnState.FoeTurnBegan += Activate;
     }
 
+    private void OnDestroy()
+    {
+        FoeTurnState.FoeTurnBegan -= Activate;
+    }
+
     private void PlayAudio(ActionInfo actionInfo)
     {
         if (currentAction != null)
@@ -75,7 +80,10 @@ public class FoeActionIndicator : MonoBehaviour
         {
             default:
             case CommandID.Attack:
-                return gameMan.PlayerMan.PlayerHealth;
+                if (gameMan.PlayerMan != null)
+                    return gameMan.PlayerMan.PlayerHealth;
+                else
+                    return null;
             case CommandID.Defend:
                 return gameMan.FoeMan.FoeHealth;
             case CommandID.Heal:
