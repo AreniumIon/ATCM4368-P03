@@ -18,7 +18,7 @@ public class PlayerTurnState : TokenGameState
     public override void Enter()
     {
         Debug.Log("player turn enter");
-        playerTurnCount = 1;
+        playerTurnCount += 1;
 
         CheckSpawnToken();
 

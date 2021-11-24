@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Sunder Defend
   m_EditorClassIdentifier: 
   commandID: 1
-  value: 8
+  value: 5

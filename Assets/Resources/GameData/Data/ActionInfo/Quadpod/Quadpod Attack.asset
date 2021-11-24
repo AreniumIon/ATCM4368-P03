@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Quadpod Attack
   m_EditorClassIdentifier: 
   commandID: 0
-  value: 5
+  value: 4
