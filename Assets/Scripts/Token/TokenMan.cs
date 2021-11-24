@@ -73,7 +73,7 @@ public class TokenMan : EntityMan
         StartCoroutine(MathFunctions.MoveToKick(transform, target.transform.position, MOVE_SPEED));
 
         // Execute
-        StartCoroutine(DelayActivate(command, PlayerTurnState.AFTER_TURN_DELAY));
+        StartCoroutine(DelayActivate(command, tokenInfo.commandID, PlayerTurnState.AFTER_TURN_DELAY));
 
         // Finish turn
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
@@ -82,23 +82,17 @@ public class TokenMan : EntityMan
     }
 
 
-    private IEnumerator DelayActivate(ICommand command, float delay)
+    private IEnumerator DelayActivate(ICommand command, CommandID commandID, float delay)
     {
         yield return new WaitForSeconds(delay);
 
         GameMan gameMan = ServiceLocator.GetService<GameMan>();
         gameMan.CommandStack.ExecuteCommand(command);
+        AudioHelper.PlayClip2D(AudioLibrary.audioDict[commandID], AudioLibrary.AUDIO_VOLUME);
 
         // Remove Token
         DeathEvent();
     }
-
-
-
-
-
-
-
 
     private Attackable GetTarget(CommandID commandID)
     {

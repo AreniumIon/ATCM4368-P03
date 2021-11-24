@@ -14,6 +14,7 @@ public class FoeActionIndicator : MonoBehaviour
 
     Vector2 basePos;
     Vector2 targetPos;
+    ActionInfo currentAction;
 
     static float MOVE_SPEED = 1.6f;
 
@@ -23,6 +24,7 @@ public class FoeActionIndicator : MonoBehaviour
 
         basePos = transform.position;
 
+        fm.FoeActions.changeNextActionEvent += PlayAudio;
         fm.FoeActions.changeNextActionEvent += UpdateIcon;
         fm.FoeActions.changeNextActionEvent += UpdateAmountText;
         fm.FoeActions.changeNextActionEvent += UpdateTarget;
@@ -30,7 +32,15 @@ public class FoeActionIndicator : MonoBehaviour
 
         FoeTurnState.FoeTurnBegan += Activate;
     }
-    
+
+    private void PlayAudio(ActionInfo actionInfo)
+    {
+        if (currentAction != null)
+            AudioHelper.PlayClip2D(AudioLibrary.audioDict[currentAction.commandID], AudioLibrary.AUDIO_VOLUME);
+
+        currentAction = actionInfo;
+    }
+
     private void UpdateIcon(ActionInfo actionInfo)
     {
         icon.sprite = GameConstants.commandSprites[actionInfo.commandID];

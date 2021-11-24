@@ -13,22 +13,16 @@ public class TurnUI : MonoBehaviour
     private void OnEnable()
     {
         PlayerTurnState.PlayerTurnBegan += OnPlayerTurnBegan;
-        PlayerTurnState.PlayerTurnEnded += OnPlayerTurnEnded;
     }
 
     private void OnDisable()
     {
         PlayerTurnState.PlayerTurnBegan -= OnPlayerTurnBegan;
-        PlayerTurnState.PlayerTurnEnded -= OnPlayerTurnEnded;
     }
 
     private void OnPlayerTurnBegan()
     {
         turnTextUI.text = "Turn   " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnState>().PlayerTurnCount;
-    }
-
-    private void OnPlayerTurnEnded()
-    {
-
+        Debug.Log("Player turn: " + ServiceLocator.GetService<GameMan>().StateTracker.GetState<PlayerTurnState>().PlayerTurnCount);
     }
 }
